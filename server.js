@@ -2,7 +2,7 @@ const express = require('express');
 const dbOperation = require('./dbfiles/dbOperation');
 const cors = require('cors');
 const app = express();
-const API_PORT = process.env.PORT || 5000;
+const API_PORT = process.env.PORT || 10000;
 const bcrypt = require('bcrypt'); // Import bcrypt
 
 
