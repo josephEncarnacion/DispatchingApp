@@ -2,20 +2,17 @@ const express = require('express');
 const dbOperation = require('./dbfiles/dbOperation');
 const cors = require('cors');
 const app = express();
-const API_PORT = process.env.PORT || 10000;
+const API_PORT = process.env.PORT || 5000;
 const bcrypt = require('bcrypt'); // Import bcrypt
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Use extended to parse nested objects
-app.use(cors({ origin: 'https://dispatchingapp-1.onrender.com' }));
+app.use(cors());
 
 const responseTeamLocations = {};
 const SALT_ROUNDS = 10; // Define the number of salt rounds for bcrypt hashing
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Dispatching App API');
-});
 // API to update the response team's location
 app.post('/api/updateLocation', (req, res) => {
   const { latitude, longitude, teamId } = req.body; // Include teamId to track each response team
