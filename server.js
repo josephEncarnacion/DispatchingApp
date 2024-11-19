@@ -13,6 +13,9 @@ app.use(cors());
 const responseTeamLocations = {};
 const SALT_ROUNDS = 10; // Define the number of salt rounds for bcrypt hashing
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Dispatching App API');
+});
 // API to update the response team's location
 app.post('/api/updateLocation', (req, res) => {
   const { latitude, longitude, teamId } = req.body; // Include teamId to track each response team
