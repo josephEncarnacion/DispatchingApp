@@ -5,14 +5,16 @@ const app = express();
 const API_PORT = process.env.PORT || 5000;
 const bcrypt = require('bcrypt'); // Import bcrypt
 
+const corsOptions = {
+  origin: 'https://dispatchingapp-1.onrender.com', // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow credentials (if needed)
+};
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Use extended to parse nested objects
-app.use(cors({
-  origin: 'https://dispatchingapp-1.onrender.com', // Replace with your frontend's URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],   // Add methods as needed
-  credentials: true                            // Enable cookies if required
-}));
+app.use(cors(corsOptions));
+
 const responseTeamLocations = {};
 const SALT_ROUNDS = 10; // Define the number of salt rounds for bcrypt hashing
 
